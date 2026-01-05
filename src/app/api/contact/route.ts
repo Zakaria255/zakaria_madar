@@ -38,7 +38,7 @@ export async function POST(request: Request) {
         const data = await resend.emails.send({
             from: 'Portfolio Contact Form <onboarding@resend.dev>',
             to: [contactEmail],
-            reply_to: email,
+            replyTo: email,
             subject: emailSubject,
             html: `
         <div>
