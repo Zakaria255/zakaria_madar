@@ -12,11 +12,18 @@ export function Contact() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
-        const data = new FormData(form);
+        const formData = new FormData(form);
 
-        // Simple Honeypot Check
-        if (data.get("_gotcha")) {
-            // Silently "succeed" for bots
+        const payload = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            subject: formData.get("subject"),
+            message: formData.get("message"),
+            honeypot: formData.get("_gotcha"), // Mapping _gotcha to honeypot
+        };
+
+        // Client-side Honeypot Check (optional, as server also checks)
+        if (payload.honeypot) {
             setStatus("success");
             form.reset();
             return;
@@ -26,12 +33,12 @@ export function Contact() {
         setErrorMessage("");
 
         try {
-            const response = await fetch("https://formspree.io/f/meeonwln", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
-                body: data,
                 headers: {
-                    'Accept': 'application/json'
-                }
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
             });
 
             const result = await response.json();
@@ -39,14 +46,9 @@ export function Contact() {
             if (response.ok) {
                 setStatus("success");
                 form.reset();
-                // Reset success message after 5 seconds
                 setTimeout(() => setStatus("idle"), 5000);
             } else {
-                if (Object.hasOwn(result, 'errors')) {
-                    throw new Error(result.errors.map((error: any) => error.message).join(", "));
-                } else {
-                    throw new Error("Oops! There was a problem submitting your form");
-                }
+                throw new Error(result.error || "Oops! There was a problem submitting your form");
             }
         } catch (error: any) {
             setStatus("error");
