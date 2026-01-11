@@ -16,6 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://zakariamad.com"),
   title: "Zakaria Ahmed Madar | Odoo Functional Consultant & Senior Web Developer",
   description: "Professional portfolio of Zakaria Ahmed Madar - Odoo Functional Consultant, Senior Web Developer, and Digital Operations Manager.",
 };
