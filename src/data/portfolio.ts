@@ -1,6 +1,6 @@
 export const portfolioData = {
     personal: {
-        name: "Madar",
+        name: "Zakaria Madar",
         title: "Odoo Functional Consultant | Senior Web Developer | Digital Communication & Web Manager",
         email: "sakicade41@gmail.com",
         location: "Mogadishu, Somalia",
