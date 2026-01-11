@@ -3,8 +3,9 @@
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
 import { Target, Layers, Settings, BookOpen } from "lucide-react";
+import React from "react";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ElementType> = {
     "Target": Target,
     "Layers": Layers,
     "Settings": Settings,
@@ -29,7 +30,7 @@ export function About() {
                                 {portfolioData.personal.summary}
                             </p>
                             <p className="leading-relaxed">
-                                I combine technical expertise with strategic thinking to deliver digital solutions that solve real business problems. Whether it's implementing complex Odoo ERP systems or developing custom web applications, my focus is always on quality, scalability, and user experience.
+                                I combine technical expertise with strategic thinking to deliver digital solutions that solve real business problems. Whether it&apos;s implementing complex Odoo ERP systems or developing custom web applications, my focus is always on quality, scalability, and user experience.
                             </p>
                         </div>
 

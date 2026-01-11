@@ -2,7 +2,7 @@
 
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
-import { Badge } from "lucide-react"; // Wait, I meant Badge component, but using check icon here
+
 
 export function Skills() {
     return (

@@ -14,16 +14,8 @@ export function Contact() {
         const form = e.currentTarget;
         const formData = new FormData(form);
 
-        const payload = {
-            name: formData.get("name"),
-            email: formData.get("email"),
-            subject: formData.get("subject"),
-            message: formData.get("message"),
-            honeypot: formData.get("_gotcha"), // Mapping _gotcha to honeypot
-        };
-
-        // Client-side Honeypot Check (optional, as server also checks)
-        if (payload.honeypot) {
+        // Honeypot Check
+        if (formData.get("_gotcha")) {
             setStatus("success");
             form.reset();
             return;
@@ -33,26 +25,26 @@ export function Contact() {
         setErrorMessage("");
 
         try {
-            const response = await fetch("/api/contact", {
+            const response = await fetch("https://formspree.io/f/meeonwln", {
                 method: "POST",
+                body: formData,
                 headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
+                    'Accept': 'application/json'
+                }
             });
-
-            const result = await response.json();
 
             if (response.ok) {
                 setStatus("success");
                 form.reset();
                 setTimeout(() => setStatus("idle"), 5000);
             } else {
+                const result = await response.json();
                 throw new Error(result.error || "Oops! There was a problem submitting your form");
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             setStatus("error");
-            setErrorMessage(error.message || "Oops! There was a problem submitting your form");
+            const message = error instanceof Error ? error.message : "Oops! There was a problem submitting your form";
+            setErrorMessage(message);
         }
     };
 
@@ -68,7 +60,7 @@ export function Contact() {
                     >
                         <h2 className="text-3xl font-bold font-heading text-primary mb-6">Get in Touch</h2>
                         <p className="text-muted-foreground mb-8 text-lg">
-                            Looking for a seasoned Odoo Consultant or Web Developer? Let's discuss how I can help your business grow.
+                            Looking for a seasoned Odoo Consultant or Web Developer? Let&apos;s discuss how I can help your business grow.
                         </p>
 
                         <div className="space-y-6">

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Download, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 export function Hero() {
     return (
