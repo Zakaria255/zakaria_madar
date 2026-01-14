@@ -31,15 +31,15 @@ export function Hero() {
                         >
                             Available for Freelance & Consulting
                         </motion.div>
-                        <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-6xl md:text-7xl font-heading">
+                        <h1 className="text-3xl font-bold tracking-tight text-primary sm:text-5xl md:text-[56px] font-heading leading-tight">
                             {portfolioData.personal.name}
                         </h1>
-                        <p className="text-xl font-medium text-muted-foreground md:text-2xl max-w-2xl">
+                        <p className="text-lg font-medium text-muted-foreground md:text-xl max-w-2xl">
                             {portfolioData.personal.title}
                         </p>
                     </div>
 
-                    <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    <p className="text-base text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
                         Helping businesses streamline operations with Odoo and building scalable, high-performance web solutions.
                     </p>
 

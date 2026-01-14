@@ -25,7 +25,7 @@ export function About() {
                         transition={{ duration: 0.5 }}
                     >
                         <h2 className="text-3xl font-bold font-heading text-primary mb-6">About Me</h2>
-                        <div className="prose prose-lg text-muted-foreground">
+                        <div className="prose text-muted-foreground">
                             <p className="mb-4 leading-relaxed">
                                 {portfolioData.personal.summary}
                             </p>
